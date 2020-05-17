@@ -3,19 +3,23 @@ package es.uah.cc.todomanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import es.uah.cc.todomanager.R;
 import es.uah.cc.todomanager.domain.TaskList;
 
 /**
- * Activity to edit a task.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
+ */
+/**
+ *
+ * Actividad para editar una tarea.
  */
 public class EditTaskActivity extends AppCompatActivity {
     /**
-     * Activity code for request code.
+     * Código de actividad para el código de solicitud.
      */
     public static final int ACTIVITY_CODE = 3;
 
@@ -68,7 +72,7 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
     /**
-     * Listener for update task events.
+     * Oyente para eventos de tareas de actualización.
      */
     protected class  OnEditTaskListener implements es.uah.cc.todomanager.OnEditTaskListener {
 

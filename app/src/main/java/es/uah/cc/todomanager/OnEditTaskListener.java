@@ -3,15 +3,23 @@ package es.uah.cc.todomanager;
 import es.uah.cc.todomanager.domain.TaskList;
 
 /**
- * This interface must be implemented by activities that contain edit task
- * fragment to allow an interaction in these fragment to be communicated
- * to the activity and potentially other fragments contained in that
- * activity.
- * <p>
- * See the Android Training lesson <a href=
- * "http://developer.android.com/training/basics/fragments/communicating.html"
- * >Communicating with Other Fragments</a> for more information.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
  */
+
+/**
+ *
+ Esta interfaz debe implementarse mediante actividades que contengan tarea de edición
+ * fragmento para permitir que se comunique una interacción en estos fragmentos
+ * a la actividad y potencialmente otros fragmentos contenidos en ese
+ * actividad.
+ * <p>
+ * Vea la lección de capacitación de Android <a href =
+ * "http://developer.android.com/training/basics/fragments/communicating.html"
+ *> Comunicación con otros fragmentos </a> para más información.
+ */
+
 public interface OnEditTaskListener {
     void onNextStep(TaskList.Task task);
     void onPreviousStep(TaskList.Task task);

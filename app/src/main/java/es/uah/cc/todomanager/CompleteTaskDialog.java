@@ -12,7 +12,9 @@ import androidx.fragment.app.DialogFragment;
 import es.uah.cc.todomanager.domain.TaskList;
 
 /**
- * Created by Fjest on 11/09/2017.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
  */
 
 public class CompleteTaskDialog extends DialogFragment {

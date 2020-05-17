@@ -6,6 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import es.uah.cc.todomanager.R;
 
+/**
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
+ */
+
 public class ContactActivity extends AppCompatActivity implements SendMessageDialog.OnSendMessageListener{
 
     @Override

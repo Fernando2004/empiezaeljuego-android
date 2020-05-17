@@ -5,6 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
+
+/**
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
+ */
 public class HelpActivity extends AppCompatActivity {
 
     private static final String BASE_URL = "file:///android_asset/html/";

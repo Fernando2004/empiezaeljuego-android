@@ -12,35 +12,42 @@ import es.uah.cc.todomanager.R;
 import es.uah.cc.todomanager.domain.TaskList;
 
 /**
- * An activity representing a single Task detail screen. This
- * activity is only used narrow width devices. On tablet-size devices,
- * item details are presented side-by-side with a list of items
- * in a {@link TaskListActivity}.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
+ */
+
+/**
+ * Una actividad que representa una sola pantalla de detalles de Tarea.
+ *  La actividad solo se utiliza en dispositivos de ancho estrecho.
+ *  En dispositivos del tamaño de una tableta,
+ *  los detalles del artículo se presentan junto con una lista de artículos
+ *  en una {@link TaskListActivity}.
  */
 public class TaskDetailActivity extends AppCompatActivity implements OnTaskChangedListener{
     private final static String TAG = "TaskDetailActivity";
     /**
-     * The activity code for request code.
+     * El código de actividad para el código de solicitud.
      */
     public static final int ACTIVITY_CODE = 1;
     /**
-     * Result: the task changed.
+     * Resultado: la tarea cambió.
      */
     public final static int CHANGED = 1;
     /**
-     * result: the task did not change.
+     * Resultado: la tarea no cambió.
      */
     public final static int NOT_CHANGED = 0;
     /**
-     * A field which indicates whether the task changed or not.
+     * Un campo que indica si la tarea cambió o no.
      */
     private boolean changed = false;
     /**
-     * the position of the task on the list view.
+     * La posición de la tarea en la vista de lista.
      */
     private int position;
     /**
-     * The task to be shown.
+     * La tarea a mostrar.
      */
     private TaskList.Task task;
 

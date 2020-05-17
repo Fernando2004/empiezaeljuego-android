@@ -3,11 +3,13 @@ package es.uah.cc.todomanager;
 import es.uah.cc.todomanager.domain.TaskList;
 
 /**
- * Created by Fjest on 13/09/2017.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
  */
 
 /**
- * A listener to do some actions when a task changes.
+ * Un oyente para hacer algunas acciones cuando una tarea cambia.
  */
 public interface OnTaskChangedListener {
     void onTaskChanged(TaskList.Task task, int position);

@@ -24,23 +24,33 @@ import androidx.core.app.NavUtils;
 
 import java.util.List;
 
+
 /**
- * A {@link PreferenceActivity} that presents a set of application settings. On
- * handset devices, settings are presented as a single list. On tablets,
- * settings are split by category, with category headers shown to the left of
- * the list of settings.
- * <p>
- * See <a href="http://developer.android.com/design/patterns/settings.html">
- * Android Design: Settings</a> for design guidelines and the <a
- * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
- * API Guide</a> for more information on developing a Settings UI.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
  */
+
+/**
+ *
+ Un {@link PreferenceActivity} que presenta un conjunto de configuraciones de la aplicación. En
+ * dispositivos de teléfono, la configuración se presenta como una sola lista. En tabletas,
+ * la configuración se divide por categoría, con encabezados de categoría a la izquierda de
+ * la lista de configuraciones.
+ * <p>
+ * Ver <a href="http://developer.android.com/design/patterns/settings.html">
+ * Diseño de Android: Configuración </a> para las pautas de diseño y el <a
+ * href = "http://developer.android.com/guide/topics/ui/settings.html"> Configuración
+ * Guía de API </a> para obtener más información sobre el desarrollo de una interfaz de usuario de configuración.
+ */
+
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
     /**
-     * A preference value change listener that updates the preference's summary
-     * to reflect its new value.
+     Un oyente de cambio de valor de preferencia que actualiza el resumen de la preferencia
+     * para reflejar su nuevo valor.
      */
+
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
@@ -90,8 +100,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     };
 
     /**
-     * Helper method to determine if the device has an extra-large screen. For
-     * example, 10" tablets are extra-large.
+     *
+     * Método auxiliar para determinar si el dispositivo tiene una pantalla extra grande. por
+     * ejemplo, las tabletas de 10 "son extragrandes.
      */
     private static boolean isXLargeTablet(Context context) {
         return (context.getResources().getConfiguration().screenLayout
@@ -99,12 +110,11 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     }
 
     /**
-     * Binds a preference's summary to its value. More specifically, when the
-     * preference's value is changed, its summary (line of text below the
-     * preference title) is updated to reflect the value. The summary is also
-     * immediately updated upon calling this method. The exact display format is
-     * dependent on the type of preference.
-     *
+     * Vincula el resumen de una preferencia a su valor. Más específicamente, cuando el
+     * Se cambia el valor de preferencia, su resumen (línea de texto debajo del
+     * título de preferencia) se actualiza para reflejar el valor. El resumen también es
+     * actualizado inmediatamente al llamar a este método. El formato de visualización exacto es
+     * depende del tipo de preferencia.
      * @see #sBindPreferenceSummaryToValueListener
      */
     private static void bindPreferenceSummaryToValue(Preference preference) {
@@ -126,7 +136,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     }
 
     /**
-     * Set up the {@link android.app.ActionBar}, if the API is available.
+     *
+     * Configure {@link android.app.ActionBar}, si la API está disponible.
      */
     private void setupActionBar() {
         ActionBar actionBar = getSupportActionBar();
@@ -166,8 +177,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     }
 
     /**
-     * This method stops fragment injection in malicious applications.
-     * Make sure to deny any unknown fragments here.
+     * Este método detiene la inyección de fragmentos en aplicaciones maliciosas.
+     * Asegúrese de negar cualquier fragmento desconocido aquí.
      */
     protected boolean isValidFragment(String fragmentName) {
         return PreferenceFragment.class.getName().equals(fragmentName)
@@ -177,8 +188,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     }
 
     /**
-     * This fragment shows general preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
+     * Este fragmento muestra solo preferencias generales. Se usa cuando el
+     * la actividad muestra una IU de configuración de dos paneles.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class GeneralPreferenceFragment extends PreferenceFragment {
@@ -207,8 +218,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     }
 
     /**
-     * This fragment shows notification preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
+     * Este fragmento muestra solo las preferencias de notificación. Se usa cuando el
+     * la actividad muestra una IU de configuración de dos paneles.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class NotificationPreferenceFragment extends PreferenceFragment {
@@ -238,8 +249,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     }
 
     /**
-     * This fragment shows data and sync preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
+     * Este fragmento muestra solo datos y preferencias de sincronización. Se usa cuando el
+     * la actividad muestra una IU de configuración de dos paneles.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class DataSyncPreferenceFragment extends PreferenceFragment {

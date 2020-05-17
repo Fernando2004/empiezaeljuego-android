@@ -18,49 +18,60 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import es.uah.cc.todomanager.domain.TaskList;
 
+
 /**
- * A fragment representing a single Task detail screen.
- * This fragment is either contained in a {@link TaskListActivity}
- * in two-pane mode (on tablets) or a {@link TaskDetailActivity}
- * on handsets.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
  */
+
+/**
+ * Un fragmento que representa una sola pantalla de detalles de Tarea.
+ * Este fragmento está contenido en una {@link TaskListActivity}
+ * en modo de dos paneles (en tabletas) o un {@link TaskDetailActivity}
+ * en teléfonos.
+ */
+
 public class TaskDetailFragment extends Fragment implements CompleteTaskDialog.CompleteDialogListener, CancelTaskDialog.CancelDialogListener {
     public  static  final  String TAG = "es.uah.cc.todomanager.TaskDetailFragment";
     /**
-     * The key for the item position on the list view included in the input arguments.
+     * La clave para la posición del elemento en la vista de lista incluida en los argumentos de entrada.
      */
+
     public static final String ARG_ITEM_POS = "es.uah.cc.todomanager.item_ps";
 
     /**
-     * The task this fragment is presenting.
+     * La tarea que presenta este fragmento.
      */
     private TaskList.Task mItem;
     /**
-     * The position of the task on the list view.
+     * La posición de la tarea en la vista de lista.
      */
     private int position;
     /**
-     * The listener for the changes suffered by the task.
+     * El oyente de los cambios sufridos por la tarea.
      */
     private OnTaskChangedListener listener = null;
     /**
-     * The listener for edit button interactions.
+     * El oyente para las interacciones del botón de edición.
      */
     private OnEditButtonListener editButtonListener;
 
     public TaskDetailFragment() {
     }
-
     /**
-     * A factory method.
-     * @param taskChangedListener The listener for changes on the task.
-     * @param editButtonListener  The listener for edit button interactions.
-     * @param task                The task to be presented.
-     * @param position            The position of the task on the list view.
-     * @return A fragment instance.
+     *
+     Un método de fábrica.
+     * @param taskChangedListener El oyente para cambios en la tarea.
+     * @param editButtonListener El oyente para las interacciones del botón de edición.
+     * @param task La tarea que se presentará.
+     * @param position La posición de la tarea en la vista de lista.
+     * @return Un instancia de fragmento.
      */
+
+
     public static TaskDetailFragment newInstance(OnTaskChangedListener taskChangedListener, OnEditButtonListener editButtonListener, TaskList.Task task, int position) {
-TaskDetailFragment fragment = new TaskDetailFragment();
+        TaskDetailFragment fragment = new TaskDetailFragment();
         fragment.setOnTaskChangedListener(taskChangedListener);
         fragment.setEditButtonListener(editButtonListener);
         Bundle args = new Bundle();
@@ -72,15 +83,15 @@ TaskDetailFragment fragment = new TaskDetailFragment();
 
     /**
      * Getter for EditButtonListener
-     * @return The listener.
+     * @return El oyente.
      */
     public OnEditButtonListener getEditButtonListener() {
         return editButtonListener;
     }
 
     /**
-     * The setter for EditButtonListener.
-     * @param editButtonListener    The listener.
+     * El setter para EditButtonListener.
+     * @param editButtonListener    El oyente.
      */
     public void setEditButtonListener(OnEditButtonListener editButtonListener) {
         this.editButtonListener = editButtonListener;
@@ -120,8 +131,9 @@ showProgressIfComplex(rootView);
     }
 
     /**
-     * Fills the text views with the data from the task.
-     * @param rootView    The root view.
+     *
+     * Rellena las vistas de texto con los datos de la tarea.
+     * @param rootView La vista raíz.
      */
     protected  void fillData(View rootView) {
     ((TextView) rootView.findViewById(R.id.task_name)).setText(getResources().getString(R.string.task_name) + " " + mItem.getName());
@@ -146,8 +158,8 @@ showProgressIfComplex(rootView);
 }
 
     /**
-     * Shows a progress bar if the task is complex.
-     * @param rootView    The root view.
+     * Muestra una barra de progreso si la tarea es compleja.
+     * @param rootView    La vista raíz.
      */
     protected  void showProgressIfComplex(View rootView) {
         if (mItem.isComplex()) {
@@ -222,14 +234,14 @@ showProgressIfComplex(rootView);
     }
 
     /**
-     * Starts an EditTaskActivity.
+     * Inicia una actividad  EditTaskActivity.
      */
     protected void editTask() {
 editButtonListener.init(mItem);
     }
 
     /**
-     * Marks a task as completed.
+     * Marca una tarea como completada.
      */
     protected void completeTask() {
         CompleteTaskDialog dialog = new CompleteTaskDialog(mItem, position, this);
@@ -240,7 +252,7 @@ editButtonListener.init(mItem);
     }
 
     /**
-     * Marks a task as cancelled.
+     * Marca una tarea como cancelada.
      */
     protected void cancelTask() {
         CancelTaskDialog dialog = new CancelTaskDialog(mItem, -1, this);
@@ -251,16 +263,16 @@ editButtonListener.init(mItem);
     }
 
     /**
-     * Getter for OnTaskChangedListener.
-     * @return The listener.
+     * Getter de OnTaskChangedListener.
+     * @return El oyente.
      */
     public OnTaskChangedListener getOnTaskChangedListener() {
         return listener;
     }
 
     /**
-     * Setter for OnTaskChangedListener.
-     * @param listener    The listener.
+     * Setter de OnTaskChangedListener.
+     * @param listener    El oyente.
      */
     public void setOnTaskChangedListener(OnTaskChangedListener listener) {
         this.listener = listener;

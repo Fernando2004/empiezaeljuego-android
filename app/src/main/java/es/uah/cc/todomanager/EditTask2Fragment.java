@@ -18,42 +18,48 @@ import java.util.Date;
 
 import es.uah.cc.todomanager.domain.TaskList;
 
-
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link EditTask2Fragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
+ */
+/**
+ * Un simple {@link Fragment} subclass.
+ * Usado para {@link EditTask2Fragment#newInstance} método de fábrica para
+ * crea una instancia de este fragmento.
  */
 public class EditTask2Fragment extends Fragment {
 
     public static final String TAG = "es.uah.cc.todomanager.EditTask2Fragment";
     /**
-     * The key for transactions and task data in the arguments.
+     * La clave para transacciones y datos de tareas en los argumentos.
      */
     public static final String EDIT_TASK_2 = "es.uah.cc.todomanager.edittask2";
     /**
-     * The task which is being edited.
+     * La tarea que se está editando.
      */
     private TaskList.Task task;
     /**
-     * The listener for events.
+     * El oyente para eventos.
      */
     private OnEditTaskListener listener;
 
     public EditTask2Fragment() {
-        // Required empty public constructor
+        /**
+         * Obligatorio constructor público vacío
+          */
     }
 
     /**
-     * Getter for OnEditTaskListener.
-     * @return The listener.
+     * Getter para OnEditTaskListener.
+     * @return El Oyente
      */
     public OnEditTaskListener getOnEditTaskListener() {
         return listener;
     }
 
     /**
-     * Setter for OnEditTaskListener.
+     * Setter para OnEditTaskListener.
      * @param listener
      */
     public void setOnEditTaskListener(OnEditTaskListener listener) {
@@ -61,11 +67,13 @@ public class EditTask2Fragment extends Fragment {
     }
 
     /**
-     * Factory method.
-     * @param listener    The listener to use.
-     * @param task        The task to be edited.
-     * @return A new instance of the fragment.
+     *
+     Método de fábrica
+     * @param listener El oyente a usar.
+     * @param task La tarea a editar.
+     * @return Una nueva instancia del fragmento.
      */
+
     public static EditTask2Fragment newInstance(OnEditTaskListener listener, TaskList.Task task) {
         EditTask2Fragment fragment = new EditTask2Fragment();
         Bundle args = new Bundle();
@@ -99,7 +107,7 @@ setup(rootView);
     }
 
     /**
-     * Shows the date picker and setups the rest of the layout.
+     * Muestra el selector de fecha y configura el resto del diseño.
      * @param view
      */
     protected void setup(View view) {
@@ -138,24 +146,25 @@ setup(rootView);
     }
 
     /**
-     * Finish the edition.
-     * @param v    The view pressed.
+     * Termina la edición.
+     * @param v La vista presionada.
      */
     protected void onFinishPressed(View v) {
     listener.onFinish(task);
 }
 
     /**
-     * Cancels the edition of the task.
-     * @param v    The view pressed.
+     *
+     * Cancela la edición de la tarea.
+     * @param v La vista presionada.
      */
     protected void onCancelPressed(View v) {
     listener.onCancel(task);
 }
 
     /**
-     * Goes to the previous screen.
-     * @param v    The view pressed.
+     * Va a la pantalla anterior.
+     * @param v    La vista presionada.
      */
     protected  void  onPreviousPressed(View v) {
 listener.onPreviousStep(task);

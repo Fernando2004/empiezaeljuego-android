@@ -12,7 +12,12 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 /**
- * A contact form.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
+ */
+/**
+ * Un formulario de contacto.
  */
 public class ContactActivityFragment extends Fragment {
 

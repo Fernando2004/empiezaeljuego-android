@@ -13,8 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls
- * to be used with AppCompat.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
+ */
+/**
+ * Un {@link android.preference.PreferenceActivity} que implementa y representa las llamadas necesarias
+ * para ser utilizado con AppCompat.
  */
 public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 

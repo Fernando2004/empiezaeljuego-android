@@ -8,7 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 /**
- * Created by Fjest on 25/09/2017.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
  */
 
 public class SendMessageDialog extends DialogFragment {

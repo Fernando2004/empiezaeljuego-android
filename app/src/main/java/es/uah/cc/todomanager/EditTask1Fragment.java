@@ -20,43 +20,47 @@ import java.util.Calendar;
 
 import es.uah.cc.todomanager.domain.TaskList;
 
-
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link EditTask1Fragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link EditTask1Fragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
+ */
+/**
+ * Una simple subclase {@link Fragment}.
+ *  * Las actividades que contienen este fragmento deben implementar el
+ *  * {@link EditTask1Fragment.OnFragmentInteractionListener} interfaz
+ *  * para manejar eventos de interacción.
+ *  * Utilice el método de fábrica {@link EditTask1Fragment # newInstance} para
+ *  * crea una instancia de este fragmento.
  */
 public class EditTask1Fragment extends Fragment {
     public static final String TAG = "es.uah.cc.todomanager.EditTask1Fragment";
     /**
-     * A key for transactions and task arguments.
+     * Una clave para transacciones y argumentos de tareas.
      */
     public static final String EDIT_TASK_1 = "es.uah.cc.todomanager.edittask1";
     /**
-     * Result: Creation of the task was completed.
+     * Resultado: se completó la creación de la tarea.
      */
     public static final int TASK_CREATION_COMPLETED = 1;
     /**
-     * Result: Edition of the task was completed.
+     * Resultado: se completó la edición de la tarea.
      */
     public static final int TASK_EDITION_COMPLETED = 2;
     /**
-     * Result: Creation of the task was cancelled.
+     * Resultado: se canceló la creación de la tarea.
      */
     public static final int TASK_CREATION_CANCELED = 0;
     /**
-     * Result: Edition of the task was cancelled.
+     * Resultado: se canceló la edición de la tarea.
      */
     public static  final  int TASK_EDITION_CANCELED = -1;
     /**
-     * Listener for events.
+     * Oyente para eventos.
      */
     private OnEditTaskListener listener;
     /**
-     * The task which is being edited.
+     * La tarea que se está editando.
      */
     private TaskList.Task task;
 
@@ -65,31 +69,31 @@ public class EditTask1Fragment extends Fragment {
     }
 
     /**
-     * A factory method.
-     * @param listener    The listener.
-     * @param task        The task to be edited.
-     * @return A new instance of the fragment.
+     * Un método de fábrica.
+     * @param listener El oyente.
+     * @param task La tarea a editar.
+     * @return Una nueva instancia del fragmento.
      */
     public static EditTask1Fragment newInstance(OnEditTaskListener listener, TaskList.Task task) {
         EditTask1Fragment fragment = new EditTask1Fragment();
         fragment.setOnEditTaskListener(listener);
         Bundle args = new Bundle();
-args.putParcelable(EDIT_TASK_1, task);
+        args.putParcelable(EDIT_TASK_1, task);
         fragment.setArguments(args);
         return fragment;
     }
 
     /**
-     * Getter for the listener.
-     * @return The listener.
+     * Getter para el  listener.
+     * @return El oyente.
      */
     public OnEditTaskListener getOnEditTaskListener() {
         return listener;
     }
 
     /**
-     * Setter for the listener.
-     * @param listener    The listener.
+     * Setter para el listener.
+     * @param listener    El oyente.
      */
     public void setOnEditTaskListener(OnEditTaskListener listener) {
         this.listener = listener;
@@ -119,8 +123,8 @@ task = getArguments().getParcelable(EDIT_TASK_1);
     }
 
     /**
-     * Load the task's data into the form fields.
-     * @param view    The root view.
+     * Cargue los datos de la tarea en los campos del formulario.
+     * @param view La vista raíz.
      */
     protected void loadTaskData(View view) {
         final View a = view;
@@ -144,10 +148,10 @@ task = getArguments().getParcelable(EDIT_TASK_1);
                 View finishButton = a.findViewById(R.id.finish_button);
                 View nextButton = a.findViewById(R.id.next_button);
                 if (isChecked) {
-finishButton.setVisibility(View.INVISIBLE);
+        finishButton.setVisibility(View.INVISIBLE);
                     nextButton.setVisibility(View.VISIBLE);
                 } else {
-finishButton.setVisibility(View.VISIBLE);
+        finishButton.setVisibility(View.VISIBLE);
                     nextButton.setVisibility(View.INVISIBLE);
                 }
             }
@@ -180,8 +184,8 @@ finishButton.setVisibility(View.VISIBLE);
     }
 
     /**
-     * Goes to the date picker screen.
-     * @param view    The view pressed.
+     * Va a la pantalla del selector de fecha.
+     * @param view La vista presionada.
      */
     public void onNextPressed(View view) {
         updateTask(task);
@@ -189,16 +193,16 @@ finishButton.setVisibility(View.VISIBLE);
     }
 
     /**
-     * Cancels the edition.
-     * @param view    The view pressed.
+     * Cancela la edición.
+     * @param view La vista presionada.
      */
     public void onCancelPressed(View view) {
         listener.onCancel(task);
     }
 
     /**
-     * Finish the edition.
-     * @param view    The view pressed.
+     * Termina la edición.
+     * @param view La vista presionada.
      */
     public void onFinishPressed(View view) {
 updateTask(task);
@@ -206,8 +210,8 @@ updateTask(task);
     }
 
     /**
-     * Updates the data of the task with the form entries.
-     * @param task    The task to be updated.
+     * Actualiza los datos de la tarea con las entradas del formulario.
+     * @param task La tarea a actualizar.
      */
     protected void updateTask(TaskList.Task task) {
         View v = getView();

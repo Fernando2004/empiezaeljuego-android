@@ -11,11 +11,16 @@ import es.uah.cc.todomanager.R;
 import es.uah.cc.todomanager.domain.TaskList;
 
 /**
- * Activity to add a new task.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
+ */
+/**
+ * Actividad para agregar una nueva tarea.
  */
 public class NewTaskActivity extends AppCompatActivity {
     /**
-     * The activity code for request code.
+     * El código de actividad para el código de solicitud.
      */
     public static final int ACTIVITY_CODE = 2;
 
@@ -64,7 +69,8 @@ public class NewTaskActivity extends AppCompatActivity {
     }
 
     /**
-     * Listener for new task events.
+     *
+     * Oyente para nuevos eventos de tareas.
      */
     protected class OnNewTaskListener implements OnEditTaskListener {
 

@@ -9,8 +9,13 @@ import androidx.fragment.app.DialogFragment;
 
 import es.uah.cc.todomanager.domain.TaskList;
 
-/** A dialog to confirm the cancellation of a task.
- * Created by Fjest on 11/09/2017.
+/**
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
+ */
+/**
+ * Un diálogo para confirmar la cancelación de una tarea.
  */
 
 public class CancelTaskDialog extends DialogFragment {
@@ -21,10 +26,10 @@ public class CancelTaskDialog extends DialogFragment {
     private CancelDialogListener listener;
 
     /**
-     * Constructor for a CancelTaskDialog.
-     * @param task        The task which is being cancelled.
-     * @param position    The position of the task on the list view.
-     * @param listener    The listener for cancel events.
+     constructor para un CancelTaskDialog.
+     * @param task La tarea que se está cancelando.
+     * @param position La posición de la tarea en la vista de lista.
+     * @param listener El oyente para cancelar eventos.
      */
     public CancelTaskDialog(TaskList.Task task, int position, CancelDialogListener listener) {
         this.task = task;
@@ -55,13 +60,13 @@ public class CancelTaskDialog extends DialogFragment {
     }
 
     /**
-     * A Listener for CancelTaskDialog events.
+     * Un oyente para los eventos CancelTaskDialog.
      */
     public static interface  CancelDialogListener {
         /**
-         * Todo when a task is cancelled.
-         * @param task        The task which has been cancelled.
-         * @param position    The position of the task on the list view.
+         * Todo cuando se cancela una tarea.
+         * @param task La tarea que se ha cancelado.
+         * @param position La posición de la tarea en la vista de lista.
          */
         void onCancel(TaskList.Task task, int position);
     }

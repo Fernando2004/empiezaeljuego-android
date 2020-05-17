@@ -34,42 +34,49 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * An activity representing a list of Tasks. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link TaskDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
+ * Una actividad que representa una lista de tareas.
+ * @author Fernando García Molino Ejr.de Arturo
+ * @version 1.0
+ * Esta actividad tiene diferentes presentaciones para teléfonos y tabletas.
+ * En teléfonos, la actividad presenta una lista de elementos, que cuando se toca,
+ * conducir a una {@link TaskDetailActivity} que representa detalles del artículo.
+ * En tabletas, la actividad presenta la lista de elementos y detalles del artículo
+ * uno al lado del otro utilizando dos paneles verticales.
  */
+
 public class TaskListActivity extends AppCompatActivity {
 
-    /**
-     * The key to exchange task objects between activities.
-     */
+/**
+ * La clave para intercambiar objetos de tarea entre actividades.
+ */
+
     public static  final String ARG_TASK = "cc.uah.es.todomanager.task";
+
     /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
+     *Si la actividad está o no en modo de dos paneles, es decir, se ejecuta en una tableta
+     * dispositivo.
      */
     private boolean mTwoPane;
     /**
-     * A filtered task list.
+     * Una lista de tareas filtrada.
      */
     private List<TaskList.Task> filteredTasks;
+
     /**
-     * A OnSharedPreferenceChangeListener.
-     * It must be a field of the activity in order to avoid the GC collects it.
+     * Un OnSharedPreferenceChangeListener.
+     * Debe ser un campo de la actividad para evitar que el GC la recopile.
      */
     private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
 
     /**
-     * Analytics Object
+     * Objeto analítico
      */
     private FirebaseAnalytics mFirebaseAnalytics;
+
     /**
-     * Filters the task list attending to several preferences.
-     * @param source    The original list.
-     * @return The filtered list.
+     * Filtra la lista de tareas atendiendo a varias preferencias.
+     * @param source La lista original.
+     * @return La lista filtrada.
      */
     protected  List<TaskList.Task> filterTasks(List<TaskList.Task> source) {
         List<TaskList.Task> l = new ArrayList<TaskList.Task>();
@@ -87,17 +94,19 @@ if (hideCancelled & t.getStatus().getStatusDescription().equals(TaskList.Cancele
     }
 
     /**
-     * Filter the master task list and refresh the recycler view using the resulting list.
-     * @param list    The recycler view list.
+     * Filtra la lista de tareas maestra y actualiza la vista del reciclador utilizando la lista resultante.
+     * @param list La lista de vista del reciclador.
      */
+
     protected void refreshTasks(RecyclerView list) {
         filteredTasks = filterTasks(TaskList.getInstance().getTasks());
         setupRecyclerView(list, filteredTasks);
     }
 
     /**
-     * Refresh the main recycler view.
+     * Actualice la vista principal del reciclador.
      */
+
     protected void refreshTasks() {
 refreshTasks((RecyclerView) findViewById(R.id.task_list));
     }
@@ -153,7 +162,7 @@ refreshTasks((RecyclerView) findViewById(R.id.task_list));
     }
 
     /**
-     * An adapter to setup the recycler view elements.
+     *Un adaptador para configurar los elementos de vista del reciclador.
      */
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
@@ -234,8 +243,9 @@ cancelTask(holder.mItem, position);
         }
 
         /**
-         * A holder for the recycler view.
+         *Un soporte para la vista del reciclador.
          */
+
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mNameView;
@@ -261,10 +271,11 @@ cancelTask(holder.mItem, position);
     }
 
     /**
-     * Marks  a task as completed.
-     * @param task        The task to complete.
-     * @param position the position on the list view.
+     * Marca una tarea como completada.
+     * @param task La tarea a completar.
+     * @param position la posición en la vista de lista.
      */
+
     protected void completeTask(TaskList.Task task, int position) {
         CompleteTaskDialog dialog = new CompleteTaskDialog(task, position, new OnListCompleteTaskListener());
         Bundle args = new Bundle();
@@ -274,10 +285,11 @@ cancelTask(holder.mItem, position);
     }
 
     /**
-     * Marks a task as cancelled.
-     * @param task        The task to be cancelled.
-     * @param position    te position on the list view.
+     * Marca una tarea como cancelada.
+     * @param task La tarea a cancelar.
+     * @param position te position en la vista de lista.
      */
+
     protected void cancelTask (TaskList.Task task, int position) {
         CancelTaskDialog dialog = new CancelTaskDialog(task, position, new OnListCancelTaskListener());
         Bundle args = new Bundle();
@@ -287,11 +299,12 @@ cancelTask(holder.mItem, position);
     }
 
     /**
-     * Shows details of a task.
-     * @param task the task to be shown.
-     * @param position    The position of the task on the list view.
-     * @param v           The view pressed.
+     * Muestra detalles de una tarea.
+     * @param task la tarea que se mostrará.
+     * @param position La posición de la tarea en la vista de lista.
+     * @param v La vista presionada.
      */
+
     protected void viewTask(TaskList.Task task, int position, View v) {
         if (mTwoPane) {
             TaskDetailFragment fragment = TaskDetailFragment.newInstance(new OnListTaskChangedListener(), new OnListEditButtonListener(), task, position);
@@ -310,9 +323,10 @@ cancelTask(holder.mItem, position);
     }
 
     /**
-     * Shows the new task form.
-     * @param v    The view pressed.
+     * Muestra el nuevo formulario de tareas.
+     * @param v La vista presionada.
      */
+
     protected void newTask(View v) {
         if (mTwoPane) {
             EditTask1Fragment fragment = EditTask1Fragment.newInstance(new OnNewTaskListener(), new TaskList.Task());
@@ -328,42 +342,47 @@ cancelTask(holder.mItem, position);
     }
 
     /**
-     * Notifies to recycler view a task was changed.
-     * @param position    The position on the list view.
+     * Notifica a la vista del reciclador que se modificó una tarea.
+     * @param position La posición en la vista de lista.
      */
+
     protected void notifyTaskChanged(int position) {
         RecyclerView list = (RecyclerView) findViewById(R.id.task_list);
         list.getAdapter().notifyItemChanged(position);
     }
-
     /**
-     * Notifies that the tassk list was changed.
-     */
+    * Notifica que se cambió la lista de tareas.
+    */
+
     protected void notifyTaskListChanged() {
         RecyclerView list = (RecyclerView) findViewById(R.id.task_list);
         list.getAdapter().notifyDataSetChanged();
     }
 
     /**
-     * Notifies that a new item was inserted on the list.
+     * Notifica que se insertó un nuevo elemento en la lista.
      */
+
     protected void notifyItemInserted() {
         RecyclerView list = (RecyclerView) findViewById(R.id.task_list);
         list.getAdapter().notifyItemInserted(TaskList.getInstance().getTasks().size());
     }
 
     /**
-     * Notifies that an item was removed from the list.
-     * @param position    the position on the list view.
+     * Notifica que un elemento se eliminó de la lista.
+     * @param position la posición en la vista de lista.
+     * /
      */
+
     protected void notifyItemRemoved(int position) {
         RecyclerView list = (RecyclerView) findViewById(R.id.task_list);
         list.getAdapter().notifyItemRemoved(position);
     }
 
     /**
-     * Do some operations after adding a task.
+     * Realice algunas operaciones después de agregar una tarea.
      */
+
     protected void addTask() {
         refreshTasks();
         Toast toast = Toast.makeText(getApplicationContext(), R.string.task_added, Toast.LENGTH_SHORT);
@@ -371,8 +390,9 @@ cancelTask(holder.mItem, position);
     }
 
     /**
-     * A listener for task cancellation.
+     * Un oyente para la cancelación de tareas.
      */
+
     public class  OnListCancelTaskListener implements CancelTaskDialog.CancelDialogListener {
         @Override
         public void onCancel(TaskList.Task task, int position) {
@@ -388,8 +408,9 @@ cancelTask(holder.mItem, position);
     }
 
     /**
-     * A listenerfor task completion.
+     * Un oyente para completar la tarea.
      */
+
     public class OnListCompleteTaskListener implements CompleteTaskDialog.CompleteDialogListener {
         @Override
         public void onComplete(TaskList.Task task, int position) {
@@ -405,8 +426,9 @@ cancelTask(holder.mItem, position);
     }
 
     /**
-     * A listener for task changes.
+     *Un oyente para los cambios de tareas.
      */
+
     public class OnListTaskChangedListener implements  OnTaskChangedListener {
         @Override
         public void onTaskChanged(TaskList.Task task, int position) {
@@ -415,7 +437,7 @@ cancelTask(holder.mItem, position);
     }
 
     /**
-     * Update when a task changes.
+     * Actualiza cuando cambia una tarea.
      * @param task
      * @param position
      */
@@ -488,8 +510,9 @@ updateTask(t, position);
     }
 
     /**
-     * A listener for new task procedure.
+     * Un oyente para un nuevo procedimiento de tarea.
      */
+
     protected  class  OnNewTaskListener implements OnEditTaskListener {
 
         @Override
@@ -522,7 +545,7 @@ TaskList.getInstance().addTask(task);
     }
 
     /**
-     * A listener for task edition procedure.
+     *  Un oyente para el procedimiento de edición de tareas.
      */
     protected class  OnUpdateTaskListener implements OnEditTaskListener {
 
@@ -559,8 +582,9 @@ new OnListTaskChangedListener().onTaskChanged(task, position);
     }
 
     /**
-     * A listener for start edition event.
+     * Un oyente para el evento de edición de inicio.
      */
+
     protected class OnListEditButtonListener implements  OnEditButtonListener {
     @Override
     public void init(TaskList.Task task) {
@@ -573,8 +597,9 @@ new OnListTaskChangedListener().onTaskChanged(task, position);
 }
 
     /**
-     * A listener for changes of preferences.
+     * Un oyente para cambios de preferencias.
      */
+
     protected class OnFilterChangedListener implements SharedPreferences.OnSharedPreferenceChangeListener {
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
